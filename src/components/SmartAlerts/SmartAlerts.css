@@ -1,0 +1,474 @@
+/* =========================================================
+   SMART ALERT BUTTON
+   ========================================================= */
+
+.smart-alert-button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+
+  width: 52px;
+  height: 52px;
+
+  border: 1px solid rgba(124, 108, 255, 0.3);
+  border-radius: 50%;
+
+  background: #11182b;
+  color: white;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  z-index: 9999;
+
+  transition: 0.25s ease;
+}
+
+.smart-alert-button:hover {
+  transform: translateY(-3px);
+  border-color: #7c6cff;
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.3);
+}
+
+.smart-alert-button.has-alerts {
+  animation: alertPulse 2s infinite;
+}
+
+@keyframes alertPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(124, 108, 255, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(124, 108, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 108, 255, 0);
+  }
+}
+
+.alert-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+
+  min-width: 20px;
+  height: 20px;
+
+  padding: 0 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ef4444;
+  color: white;
+
+  border-radius: 50%;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  border: 2px solid #080b14;
+}
+
+
+/* =========================================================
+   ALERT PANEL
+   ========================================================= */
+
+.smart-alert-panel {
+  position: fixed;
+
+  right: 25px;
+  bottom: 90px;
+
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  max-height: 75vh;
+
+  overflow-y: auto;
+
+  background: #0d1120;
+
+  border: 1px solid rgba(124, 108, 255, 0.25);
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(99, 102, 241, 0.08);
+
+  z-index: 9998;
+
+  animation: alertPanelOpen 0.25s ease;
+}
+
+@keyframes alertPanelOpen {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   ALERT HEADER
+   ========================================================= */
+
+.smart-alert-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+  background: #11182b;
+}
+
+.smart-alert-header h3 {
+  margin: 5px 0 0;
+
+  color: var(--text);
+
+  font-size: 20px;
+}
+
+.smart-alert-close-panel {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: var(--muted);
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.smart-alert-close-panel:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================================================
+   NOTIFICATION PERMISSION
+   ========================================================= */
+
+.notification-permission {
+  margin: 14px;
+
+  padding: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  background: rgba(124, 108, 255, 0.08);
+
+  border: 1px solid rgba(124, 108, 255, 0.18);
+
+  border-radius: 12px;
+}
+
+.notification-permission strong {
+  color: var(--text);
+  font-size: 12px;
+}
+
+.notification-permission p {
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.notification-permission button {
+  flex-shrink: 0;
+
+  border: none;
+
+  padding: 8px 12px;
+
+  border-radius: 8px;
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   ALERT LIST
+   ========================================================= */
+
+.alerts-list {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* =========================================================
+   ALERT CARD
+   ========================================================= */
+
+.smart-alert-card {
+  padding: 16px;
+
+  background: #111629;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  border-radius: 14px;
+
+  transition: 0.2s ease;
+}
+
+.smart-alert-card:hover {
+  border-color: rgba(124, 108, 255, 0.3);
+}
+
+
+/* Event alert */
+
+.smart-alert-card.event {
+  border-left: 3px solid #f59e0b;
+}
+
+
+/* Deadline alert */
+
+.smart-alert-card.deadline {
+  border-left: 3px solid #ef4444;
+}
+
+
+/* Top */
+
+.smart-alert-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.smart-alert-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(124, 108, 255, 0.1);
+
+  border-radius: 9px;
+
+  font-size: 18px;
+}
+
+.smart-alert-dismiss {
+  width: 25px;
+  height: 25px;
+
+  border: none;
+  background: transparent;
+
+  color: #6f778d;
+
+  cursor: pointer;
+
+  font-size: 11px;
+}
+
+.smart-alert-dismiss:hover {
+  color: white;
+}
+
+
+/* Status */
+
+.smart-alert-status {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  padding: 5px 8px;
+
+  background: rgba(239, 68, 68, 0.1);
+
+  border-radius: 6px;
+
+  color: #ff8b98;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+/* Title */
+
+.smart-alert-card h4 {
+  margin: 3px 0 6px;
+
+  color: var(--text);
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
+/* Message */
+
+.smart-alert-message {
+  margin: 0 0 10px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+/* Time */
+
+.smart-alert-time {
+  margin-bottom: 10px;
+
+  color: #fbbf24;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* Saved */
+
+.personal-alert {
+  margin-bottom: 12px;
+
+  color: #8f84ff;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* Action */
+
+.smart-alert-action {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 12px;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   NO ALERTS
+   ========================================================= */
+
+.no-alerts {
+  padding: 35px 25px;
+
+  text-align: center;
+}
+
+.no-alerts-icon {
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+.no-alerts h4 {
+  margin: 0 0 7px;
+
+  color: var(--text);
+
+  font-size: 15px;
+}
+
+.no-alerts p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .smart-alert-button {
+    right: 16px;
+    bottom: 16px;
+
+    width: 48px;
+    height: 48px;
+  }
+
+  .smart-alert-panel {
+    right: 12px;
+    bottom: 75px;
+
+    width: calc(100vw - 24px);
+
+    max-height: 78vh;
+  }
+
+  .smart-alert-header {
+    padding: 16px;
+  }
+
+  .notification-permission {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .notification-permission button {
+    width: 100%;
+  }
+}
